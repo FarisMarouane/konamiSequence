@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import detectKonamiSequence from './konami2';
+
+window.addEventListener('keydown', ({ key }) => {
+  if (detectKonamiSequence(key) === 'OK') {
+    alert('OK!!!');
+  }
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
