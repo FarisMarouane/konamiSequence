@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import { fromEvent } from 'rxjs';
 import logo from './logo.svg';
 import './App.css';
+import detectKonamiSequence from './konami';
 
 class App extends Component {
+  componentDidMount() {
+    this.keysSubscription = fromEvent(document, 'keydown');
+    detectKonamiSequence(this.keysSubscription).subscribe(v => console.log(v));
+  }
+
+  componentWillUnmount() {
+    this.keysSubscription.unsubscribe();
+  }
   render() {
     return (
       <div className="App">
