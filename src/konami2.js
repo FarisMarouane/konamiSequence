@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import isEqual from './helpers';
 
 const konamiSequence = [
   'ArrowUp',
@@ -18,7 +18,7 @@ function isKonami(seq1, seq2 = konamiSequence) {
   if (seq1.length < 10) {
     return false;
   }
-  return _.isEqual(seq1, seq2);
+  return isEqual(seq1, seq2);
 }
 
 function createBuffer(key, size = 10) {
